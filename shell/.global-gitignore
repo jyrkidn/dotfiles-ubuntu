@@ -1,0 +1,12 @@
+# Vim swap files
+.*.sw?
+
+# vs code
+.vscode
+
+# Node
+node_modules
+npm-debug.log
+yarn-error.log
+.phpunit-watcher-cache.php
+.phpunit.result.cache
