@@ -1,5 +1,7 @@
 #!/bin/bash
 
+PHP="php7.3"
+
 # Hide "last login" line when starting a new terminal session
 touch $HOME/.hushlogin
 
@@ -17,11 +19,26 @@ git config --global core.excludesfile $HOME/.global-gitignore
 rm $HOME/.zshrc
 ln -s $HOME/.dotfiles/shell/.zshrc $HOME/.zshrc
 
+# Symlink profile
+rm $HOME/.profile
+ln -s $HOME/.dotfiles/shell/.profile $HOME/.profile
+
 # Symlink vim prefs
 rm $HOME/.vimrc
 ln -s $HOME/.dotfiles/shell/.vimrc $HOME/.vimrc
 rm $HOME/.vim
 ln -s $HOME/.dotfiles/shell/.vim $HOME/.vim
+
+echo 'Install node'
+echo '-----------'
+curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
+sudo apt-get install -y nodejs
+
+echo 'Install php'
+echo '-----------'
+add-apt-repository ppa:ondrej/php
+apt-update
+apt-get install $PHP
 
 echo 'Install composer'
 echo '----------------'
@@ -31,24 +48,20 @@ php composer-setup.php
 php -r "unlink('composer-setup.php');"
 mv composer.phar /usr/local/bin/composer
 
-echo 'Install node'
-echo '-----------'
-curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-sudo apt-get install -y nodejs
-
-echo 'Install php'
-echo '-----------'
-
-
-echo 'Install imagemagick'
-echo '-------------------'
+echo 'Install PECL'
+echo '------------'
+apt install php-pear
+apt install php-dev
 
 echo 'Install imagick'
 echo '---------------'
+apt install imagemagick
+apt install libmagickwand-dev
 pecl install imagick
 
 echo 'Install memcached'
 echo '-----------------'
+apt install libmemcached-dev
 pecl install memcached
 
 echo 'Install xdebug'
@@ -61,8 +74,14 @@ pecl install redis
 
 echo 'Install laravel valet'
 echo '---------------------'
+apt install network-manager libnss3-tools jq xsel libmcrypt-dev
+apt install $PHP-cli $PHP-curl $PHP-mbstring $PHP-mcrypt $PHP-xml $PHP-zip $PHP-mbstring
+pecl install mcrypt
 composer global require cpriego/valet-linux
 valet install
 
 echo 'Install mysql'
 echo '-------------'
+apt install mysql-server $PHP-mysql
+mysql_secure_installation
+mysqladmin -u root password
