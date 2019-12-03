@@ -8,8 +8,10 @@ touch $HOME/.hushlogin
 # Install zsh
 echo 'Install zsh and zplug'
 echo '-----------------'
+apt install gawk
 rm -rf $HOME/.zsh
 curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
+chsh -s $(which zsh)
 
 # Add global gitignore
 ln -s $HOME/.dotfiles/shell/.global-gitignore $HOME/.global-gitignore
@@ -28,6 +30,18 @@ rm $HOME/.vimrc
 ln -s $HOME/.dotfiles/shell/.vimrc $HOME/.vimrc
 rm $HOME/.vim
 ln -s $HOME/.dotfiles/shell/.vim $HOME/.vim
+
+echo 'Install bat'
+echo '-----------'
+wget https://github.com/sharkdp/bat/releases/download/v0.12.1/bat_0.12.1_amd64.deb
+dpkg -i bat_0.12.1_amd64.deb
+
+echo 'Install z'
+echo '---------'
+mkdir $HOME/apps
+cd $HOME/apps
+git clone https://github.com/rupa/z.git
+cd $HOME
 
 echo 'Install node'
 echo '-----------'
@@ -79,9 +93,12 @@ apt install $PHP-cli $PHP-curl $PHP-mbstring $PHP-mcrypt $PHP-xml $PHP-zip $PHP-
 pecl install mcrypt
 composer global require cpriego/valet-linux
 valet install
+systemctl disable systemd-resolved.service
 
 echo 'Install mysql'
 echo '-------------'
 apt install mysql-server $PHP-mysql
 mysql_secure_installation
 mysqladmin -u root password
+
+echo 'Reboot your system!'

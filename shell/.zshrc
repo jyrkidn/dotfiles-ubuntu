@@ -2,6 +2,7 @@ export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 
 source ~/.zplug/init.zsh
+source ~/.profile
 source /etc/profile
 
 # external Plugins
@@ -43,7 +44,7 @@ esac
 
 alias cat="bat"
 
-. ~/web/z/z.sh
+. ~/apps/z/z.sh
 
 # Install plugins if there are plugins that have not been installed
 if ! zplug check --verbose; then
