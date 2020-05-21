@@ -44,7 +44,7 @@ case $TERM in
 esac
 
 alias cat="batcat"
-alias satis="ssh fuchikoma 'alfons run_satis_build'"
+alias satis="ssh fuchikoma 'alfons run_satis_build' && notify-send 'Satis build is finished!'"
 
 merge() {
     current=$(git rev-parse --abbrev-ref HEAD)
