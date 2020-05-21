@@ -1,14 +1,17 @@
 #!/bin/bash
 
-PHP="php7.3"
+PHP="php7.4"
 
 # Hide "last login" line when starting a new terminal session
 touch $HOME/.hushlogin
 
+# Install vim
+sudo apt install vim
+
 # Install zsh
 echo 'Install zsh and zplug'
 echo '-----------------'
-apt install gawk
+sudo apt install gawk zsh
 rm -rf $HOME/.zsh
 curl -sL --proto-redir -all,https https://raw.githubusercontent.com/zplug/installer/master/installer.zsh | zsh
 chsh -s $(which zsh)
@@ -20,6 +23,7 @@ git config --global core.excludesfile $HOME/.global-gitignore
 # Symlink zsh prefs
 rm $HOME/.zshrc
 ln -s $HOME/.dotfiles/shell/.zshrc $HOME/.zshrc
+ln -s $HOME/.dotfiles/shell/.p10k.zsh $HOME/.p10k.zsh
 
 # Symlink profile
 rm $HOME/.profile
@@ -33,8 +37,8 @@ ln -s $HOME/.dotfiles/shell/.vim $HOME/.vim
 
 echo 'Install bat'
 echo '-----------'
-wget https://github.com/sharkdp/bat/releases/download/v0.12.1/bat_0.12.1_amd64.deb
-dpkg -i bat_0.12.1_amd64.deb
+wget https://github.com/sharkdp/bat/releases/download/v0.15.1/bat_0.15.1_amd64.deb
+dpkg -i bat_0.15.1_amd64.deb
 
 echo 'Install z'
 echo '---------'
@@ -55,9 +59,9 @@ npm completion >> ~/.zshrc
 
 echo 'Install php'
 echo '-----------'
-add-apt-repository ppa:ondrej/php
-apt-update
-apt-get install $PHP
+sudo add-apt-repository ppa:ondrej/php
+sudo apt update
+sudo apt install $PHP
 
 echo 'Install composer'
 echo '----------------'
@@ -66,44 +70,41 @@ php -r "if (hash_file('sha384', 'composer-setup.php') === 'a5c698ffe4b8e849a443b
 php composer-setup.php
 php -r "unlink('composer-setup.php');"
 mv composer.phar /usr/local/bin/composer
+echo 'export PATH="$PATH:$HOME/.composer/vendor/bin' >> ~/.profile
+composer global require squizlabs/php_codesniffer
 
 echo 'Install PECL'
 echo '------------'
-apt install php-pear
-apt install php-dev
+sudo apt install php-pear
+sudo apt install php-dev
 
 echo 'Install imagick'
 echo '---------------'
-apt install imagemagick
-apt install libmagickwand-dev
-pecl install imagick
+sudo apt install imagemagick
+sudo apt install libmagickwand-dev
+sudo pecl install imagick
 
 echo 'Install memcached'
 echo '-----------------'
-apt install libmemcached-dev
-pecl install memcached
+sudo apt install libmemcached-dev
+sudo pecl install memcached
 
 echo 'Install xdebug'
 echo '--------------'
-pecl install xdebug
-
-echo 'Install redis'
-echo '-------------'
-pecl install redis
+sudo pecl install xdebug
 
 echo 'Install laravel valet'
 echo '---------------------'
-apt install network-manager libnss3-tools jq xsel libmcrypt-dev
-apt install $PHP-cli $PHP-curl $PHP-mbstring $PHP-mcrypt $PHP-xml $PHP-zip $PHP-mbstring
-pecl install mcrypt
-composer global require cpriego/valet-linux
+sudo apt install network-manager libnss3-tools jq xsel
+sudo apt install $PHP-cli $PHP-curl $PHP-mbstring $PHP-mysql $PHP-xml $PHP-zip $PHP-mbstring
+composer global require genesisweb/valet-linux-plus
 valet install
-systemctl disable systemd-resolved.service
+sudo mysql_secure_installation
 
-echo 'Install mysql'
-echo '-------------'
-apt install mysql-server $PHP-mysql
-mysql_secure_installation
-mysqladmin -u root password
+echo 'Manually install'
+echo '----------------'
+echo '* Download latest zip: https://github.com/tonsky/FiraCode'
+echo '    * extract zip to ~/.local/share/fonts'
+
 
 echo 'Reboot your system!'

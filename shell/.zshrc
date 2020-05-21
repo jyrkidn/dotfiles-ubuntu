@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
+
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
 export BAT_THEME="GitHub"
@@ -29,10 +36,8 @@ zplug "plugins/composer", from:oh-my-zsh
 zplug "zsh-users/zsh-history-substring-search", from:github, as:plugin, use:zsh-syntax-highlighting.zsh, use:zsh-history-substring-search.zsh
 zplug "jessarcher/zsh-artisan", use:artisan.plugin.zsh, from:github, as:plugin
 zplug "zpm-zsh/ls", use:ls.plugin.zsh, from:github, as:plugin
-zplug "zpm-zsh/dircolors-material", use:dircolors-material.plugin.zsh, from:github, as:plugin
-zplug "bhilburn/powerlevel9k", use:powerlevel9k.zsh-theme
-
-POWERLEVEL9K_PROMPT_ON_NEWLINE=true
+zplug "zpm-zsh/material-colors", use:material-colors.plugin.zsh, from:github, as:plugin
+zplug "romkatv/powerlevel10k", as:theme, depth:1
 
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
@@ -43,7 +48,7 @@ case $TERM in
     ;;
 esac
 
-alias cat="batcat"
+alias cat="bat"
 alias satis="ssh fuchikoma 'alfons run_satis_build' && notify-send 'Satis build is finished!'"
 
 merge() {
@@ -175,3 +180,6 @@ elif type compctl &>/dev/null; then
   compctl -K _npm_completion npm
 fi
 ###-end-npm-completion-###
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
