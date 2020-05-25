@@ -20,6 +20,11 @@ chsh -s $(which zsh)
 ln -s $HOME/.dotfiles/shell/.global-gitignore $HOME/.global-gitignore
 git config --global core.excludesfile $HOME/.global-gitignore
 
+# Global configs for GIT
+git config --global core.editor "vim"
+git config --global user.name "Jyrki De Neve"
+git config --global user.email "jyrki.deneve@gmail.com"
+
 # Symlink zsh prefs
 rm $HOME/.zshrc
 ln -s $HOME/.dotfiles/shell/.zshrc $HOME/.zshrc
