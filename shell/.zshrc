@@ -7,7 +7,6 @@ fi
 
 export LANG=en_US.UTF-8
 export LC_ALL=en_US.UTF-8
-export BAT_THEME="GitHub"
 
 source ~/.zplug/init.zsh
 source ~/.profile
@@ -59,6 +58,15 @@ merge() {
     git merge $current
     git push origin $branch
     git checkout $current
+}
+
+tag() {
+    tag=$1
+    git tag -a $tag -m "Released $tag" && git push -u origin $tag
+}
+
+dirty_folders() {
+  START=`pwd`; find . -type d | egrep "\.git$" | while read git_folder; do s=`cd $git_folder; cd ..; git status -sb`; count=`echo $s | wc -l`; [ ! $count -eq 1 ] && echo $git_folder | sed 's/\.git//g'; cd $START; done
 }
 
 # zz - smart directory changer
