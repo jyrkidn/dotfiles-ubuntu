@@ -5,6 +5,7 @@ alias z=' zz'
 
 # PHP
 alias phpunit="vendor/bin/phpunit"
+alias pest="vendor/bin/pest"
 alias a="php artisan"
 alias c="composer"
 alias cu="composer update"
@@ -16,6 +17,9 @@ alias mfs='php artisan migrate:fresh --seed'
 alias nah='git reset --hard;git clean -df'
 alias p="phpunit"
 alias pf="phpunit --filter "
+alias pe="pest"
+alias pef="pest --filter "
+alias peg="pest --group "
 alias d="php artisan dusk"
 alias df="php artisan dusk --filter"
 alias sshconfig="vim ~/.ssh/config"
