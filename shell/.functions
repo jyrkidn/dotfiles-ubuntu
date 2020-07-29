@@ -74,3 +74,13 @@ function commit() {
   git add .
   eval "git commit -a -m '${commitMessage}'"
 }
+
+function p () {
+  vendor/bin/$(phpunit-or-pest) $*;
+}
+function pf () {
+  vendor/bin/$(phpunit-or-pest) --filter $*
+}
+function pg () {
+  vendor/bin/$(phpunit-or-pest) --group $*
+}
