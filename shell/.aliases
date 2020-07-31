@@ -30,3 +30,5 @@ alias l="ls -laF"
 
 # Enable aliases to be sudo’ed
 alias sudo='sudo '
+
+alias grep="grep --color=auto"
