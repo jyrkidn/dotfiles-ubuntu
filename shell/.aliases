@@ -15,8 +15,8 @@ alias cda="composer dump-autoload -o"
 alias hostfile="sudo vim /etc/hosts"
 alias mfs='php artisan migrate:fresh --seed'
 alias nah='git reset --hard;git clean -df'
-alias d="php artisan dusk"
-alias df="php artisan dusk --filter"
+alias ad="php artisan dusk"
+alias adf="php artisan dusk --filter"
 alias sshconfig="vim ~/.ssh/config"
 
 # Git
