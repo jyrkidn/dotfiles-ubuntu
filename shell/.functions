@@ -84,3 +84,17 @@ function pf () {
 function pg () {
   vendor/bin/$(phpunit-or-pest) --group $*
 }
+
+# usage:
+#    up 2 = cd ../..
+#    up www = will cd to the www folder
+function up() {
+  case $1 in
+    *[!0-9]*)                                          # if no a number
+      cd $( pwd | sed -r "s|(.*/$1[^/]*/).*|\1|" )     # search dir_name in current path, if found - cd to it
+      ;;                                               # if not found - not cd
+    *)
+      cd $(printf "%0.0s../" $(seq 1 $1));             # cd ../../../../  (N dirs)
+    ;;
+  esac
+}
