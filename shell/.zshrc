@@ -135,6 +135,17 @@ elif type compctl &>/dev/null; then
 fi
 ###-end-npm-completion-###
 
+compdef _polar_add_completion polar
+
+function _polar_add_completion() {
+    if [ -f /usr/local/bin/polar ]; then
+        compadd `_polar_get_command_list`
+    fi
+}
+
+function _polar_get_command_list() {
+    polar --raw --no-ansi list | sed "s/[[:space:]].*//g"
+}
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
