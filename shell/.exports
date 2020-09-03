@@ -15,4 +15,5 @@ export LANG="en_US.UTF-8"
 export LC_ALL="en_US.UTF-8"
 
 # https://github.com/sharkdp/bat#highlighting-theme
-export BAT_THEME="github"
+export BAT_THEME="GitHub"
+
