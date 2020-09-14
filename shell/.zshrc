@@ -12,6 +12,8 @@ source ~/.zplug/init.zsh
 source ~/.profile
 source /etc/profile
 
+eval "$(starship init zsh)"
+
 # external Plugins
 zplug "zsh-users/zsh-syntax-highlighting"
 zplug "zsh-users/zsh-history-substring-search"
@@ -25,7 +27,7 @@ zplug "plugins/command-not-found", from:oh-my-zsh
 zplug "plugins/git", from:oh-my-zsh
 zplug "plugins/github", from:oh-my-zsh
 zplug "plugins/gitignore", from:oh-my-zsh
-zplug "plugins/git-prompt", from:oh-my-zsh
+# zplug "plugins/git-prompt", from:oh-my-zsh
 zplug "plugins/man", from:oh-my-zsh
 zplug "plugins/npm", from:oh-my-zsh
 zplug "plugins/sudo", from:oh-my-zsh
@@ -36,7 +38,7 @@ zplug "zsh-users/zsh-history-substring-search", from:github, as:plugin, use:zsh-
 zplug "jessarcher/zsh-artisan", use:artisan.plugin.zsh, from:github, as:plugin
 zplug "zpm-zsh/ls", use:ls.plugin.zsh, from:github, as:plugin
 zplug "zpm-zsh/material-colors", use:material-colors.plugin.zsh, from:github, as:plugin
-zplug "romkatv/powerlevel10k", as:theme, depth:1
+#zplug "romkatv/powerlevel10k", as:theme, depth:1
 
 bindkey '^[[1;5D' backward-word
 bindkey '^[[1;5C' forward-word
@@ -147,7 +149,7 @@ function _polar_get_command_list() {
     polar --raw --no-ansi list | sed "s/[[:space:]].*//g"
 }
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
 
 # To customize prompt, run `p10k configure` or edit ~/.dotfiles/shell/.p10k.zsh.
-[[ ! -f ~/.dotfiles/shell/.p10k.zsh ]] || source ~/.dotfiles/shell/.p10k.zsh
+#[[ ! -f ~/.dotfiles/shell/.p10k.zsh ]] || source ~/.dotfiles/shell/.p10k.zsh

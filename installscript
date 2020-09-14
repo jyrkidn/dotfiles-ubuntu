@@ -25,10 +25,13 @@ git config --global core.editor "vim"
 git config --global user.name "Jyrki De Neve"
 git config --global user.email "jyrki.deneve@gmail.com"
 
+# Install starship.rs
+curl -fsSL https://starship.rs/install.sh | bash
+
 # Symlink zsh prefs
 rm $HOME/.zshrc
 ln -s $HOME/.dotfiles/shell/.zshrc $HOME/.zshrc
-ln -s $HOME/.dotfiles/shell/.p10k.zsh $HOME/.p10k.zsh
+ln -s $HOME/.dotfiles/shell/starship.toml $HOME/.config/starship.toml
 
 # Symlink profile
 rm $HOME/.profile
