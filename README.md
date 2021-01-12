@@ -18,4 +18,8 @@ The bootstrap script can be run by cd-ing into the `.dotfiles` directory and per
 ./bootstrap
 ```
 
+## Customizations
+
+* [Dynamic Wallpaper](https://github.com/adi1090x/dynamic-wallpaper)
+
 Feel free to create an issue on this repo if you have any questions about them.

@@ -153,3 +153,5 @@ function _polar_get_command_list() {
 
 # To customize prompt, run `p10k configure` or edit ~/.dotfiles/shell/.p10k.zsh.
 #[[ ! -f ~/.dotfiles/shell/.p10k.zsh ]] || source ~/.dotfiles/shell/.p10k.zsh
+autoload -U +X bashcompinit && bashcompinit
+complete -o nospace -C /usr/local/bin/bitcomplete bit
