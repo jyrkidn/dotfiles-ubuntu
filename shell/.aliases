@@ -1,4 +1,4 @@
-alias cat="bat"
+alias cat="batcat"
 alias satis="ssh fuchikoma 'alfons run_satis_build' && notify-send 'Satis build is finished!'"
 
 alias z=' zz'
@@ -22,6 +22,7 @@ alias sshconfig="vim ~/.ssh/config"
 # Git
 alias gc="git checkout"
 alias gpo="git push origin"
+alias gp="git push"
 alias gm="git merge"
 alias glog="git log"
 

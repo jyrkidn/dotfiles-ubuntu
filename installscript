@@ -45,8 +45,7 @@ ln -s $HOME/.dotfiles/shell/.vim $HOME/.vim
 
 echo 'Install bat'
 echo '-----------'
-wget https://github.com/sharkdp/bat/releases/download/v0.15.1/bat_0.15.1_amd64.deb
-dpkg -i bat_0.15.1_amd64.deb
+apt install bat
 
 echo 'Install z'
 echo '---------'
@@ -78,7 +77,7 @@ php -r "if (hash_file('sha384', 'composer-setup.php') === 'a5c698ffe4b8e849a443b
 php composer-setup.php
 php -r "unlink('composer-setup.php');"
 mv composer.phar /usr/local/bin/composer
-echo 'export PATH="$PATH:$HOME/.composer/vendor/bin' >> ~/.profile
+echo 'export PATH=$PATH:$HOME/.composer/vendor/bin' >> ~/.profile
 composer global require squizlabs/php_codesniffer
 
 echo 'Install PECL'
@@ -105,13 +104,13 @@ echo 'Install laravel valet'
 echo '---------------------'
 sudo apt install network-manager libnss3-tools jq xsel
 sudo apt install $PHP-cli $PHP-curl $PHP-mbstring $PHP-mysql $PHP-xml $PHP-zip $PHP-mbstring
-composer global require genesisweb/valet-linux-plus
+composer global require cpriego/valet-linux
+composer global require tightenco/takeout
 valet install
-sudo mysql_secure_installation
 
 echo 'Manually install'
 echo '----------------'
-echo '* Download latest zip: https://github.com/tonsky/FiraCode'
+echo '* Download latest zip: https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraCode'
 echo '    * extract zip to ~/.local/share/fonts'
 
 

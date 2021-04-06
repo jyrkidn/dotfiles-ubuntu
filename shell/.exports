@@ -20,3 +20,4 @@ export BAT_THEME="GitHub"
 # TMUX
 export ZSH_TMUX_AUTOCONNECT="false"
 
+export STARSHIP_CONFIG=~/.config/starship.toml
