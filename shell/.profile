@@ -29,8 +29,3 @@ fi
 if [ -d "$HOME/.config/composer/vendor/bin" ] ; then
     PATH="$HOME/.config/composer/vendor/bin:$PATH"
 fi
-export PATH=~/.npm-global/bin:$PATH
-export PATH=$PATH:$HOME/.composer/vendor/bin:$HOME/.dotfiles/shell/bin
-export PATH=~/.npm-global/bin:$PATH
-export PATH=$PATH:$HOME/.composer/vendor/bin
-export PATH=$PATH:$HOME/.local/bin

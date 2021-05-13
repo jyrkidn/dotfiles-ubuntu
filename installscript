@@ -45,23 +45,14 @@ ln -s $HOME/.dotfiles/shell/.vim $HOME/.vim
 
 echo 'Install bat'
 echo '-----------'
-apt install bat
+sudo apt install bat
 
-echo 'Install z'
-echo '---------'
-mkdir $HOME/apps
-cd $HOME/apps
-git clone https://github.com/rupa/z.git
-cd $HOME
-
-echo 'Install node'
+echo 'Install nvm'
 echo '-----------'
-curl -sL https://deb.nodesource.com/setup_10.x | sudo -E bash -
-sudo apt-get install -y nodejs
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.38.0/install.sh | bash
+nvm install 14
 mkdir ~/.npm-global
 npm config set prefix '~/.npm-global'
-echo 'export PATH=~/.npm-global/bin:$PATH' >> ~/.profile
-source ~/.profile
 npm completion >> ~/.zshrc
 
 echo 'Install php'
@@ -76,9 +67,7 @@ php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
 php -r "if (hash_file('sha384', 'composer-setup.php') === 'a5c698ffe4b8e849a443b120cd5ba38043260d5c4023dbf93e1558871f1f07f58274fc6f4c93bcfd858c6bd0775cd8d1') { echo 'Installer verified'; } else { echo 'Installer corrupt'; unlink('composer-setup.php'); } echo PHP_EOL;"
 php composer-setup.php
 php -r "unlink('composer-setup.php');"
-mv composer.phar /usr/local/bin/composer
-echo 'export PATH=$PATH:$HOME/.composer/vendor/bin' >> ~/.profile
-composer global require squizlabs/php_codesniffer
+sudo mv composer.phar /usr/local/bin/composer
 
 echo 'Install PECL'
 echo '------------'
@@ -96,22 +85,27 @@ echo '-----------------'
 sudo apt install libmemcached-dev
 sudo pecl install memcached
 
-echo 'Install xdebug'
-echo '--------------'
-sudo pecl install xdebug
-
 echo 'Install laravel valet'
 echo '---------------------'
 sudo apt install network-manager libnss3-tools jq xsel
-sudo apt install $PHP-cli $PHP-curl $PHP-mbstring $PHP-mysql $PHP-xml $PHP-zip $PHP-mbstring
+sudo apt install php7.4-cli php7.4-fpm php7.4-curl php7.4-mbstring php7.4-mysql php7.4-xml php7.4-zip php7.4-mbstring
+sudo apt install php8.0-cli php8.0-fpm php8.0-curl php8.0-mbstring php8.0-mysql php8.0-xml php8.0-zip php8.0-mbstring
 composer global require cpriego/valet-linux
 composer global require tightenco/takeout
+composer global require squizlabs/php_codesniffer
 valet install
+mkdir $HOME/web
+cd $HOME/web
+valet park
+cd $HOME
 
 echo 'Manually install'
 echo '----------------'
-echo '* Download latest zip: https://github.com/ryanoasis/nerd-fonts/tree/master/patched-fonts/FiraCode'
-echo '    * extract zip to ~/.local/share/fonts'
-
+cd $HOME/Downloads
+wget https://github.com/tonsky/FiraCode/releases/download/5.2/Fira_Code_v5.2.zip
+unzip Fira_Code_v5.2.zip -d fira_code
+mkdir $HOME/.local/share/fonts
+mv fira_code $HOME/.local/share/fonts/.
+rm Fira_Code_v5.2.zip
 
 echo 'Reboot your system!'

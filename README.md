@@ -18,8 +18,8 @@ The bootstrap script can be run by cd-ing into the `.dotfiles` directory and per
 ./bootstrap
 ```
 
-## Customizations
+## Theming
 
-* [Dynamic Wallpaper](https://github.com/adi1090x/dynamic-wallpaper)
+Check out [https://github.com/Mayccoll/Gogh](https://github.com/Mayccoll/Gogh)
 
 Feel free to create an issue on this repo if you have any questions about them.
