@@ -23,3 +23,10 @@ The bootstrap script can be run by cd-ing into the `.dotfiles` directory and per
 Check out [https://github.com/Mayccoll/Gogh](https://github.com/Mayccoll/Gogh)
 
 Feel free to create an issue on this repo if you have any questions about them.
+
+## Extensions
+
+- [Sound Input & Output Device Chooser](https://extensions.gnome.org/extension/906/sound-output-device-chooser/)
+- [Clipboard Indicator](https://extensions.gnome.org/extension/779/clipboard-indicator/)
+- [Dash to Panel](https://extensions.gnome.org/extension/1160/dash-to-panel/)
+- [Easy Docker Containers](https://extensions.gnome.org/extension/2224/easy-docker-containers/)
